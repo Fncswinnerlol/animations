@@ -20,7 +20,16 @@ img {
  body {
     background-color: #6DE3A9; /* Light gray background */
   }
+.fade-out-text {
+  /* Default state is visible */
+  opacity: 1; 
+  transition: opacity 1s ease-out; /* Smooth transition for the opacity change */
+}
 
+/* This class is added by JavaScript */
+.fade-out-text.is-hidden {
+  opacity: 0;
+}
 </style>
 <body>
 <h2>What Can JavaScript Do?</h2>
@@ -51,9 +60,9 @@ img {
 
 <h2>JavaScript can make stuff disappear...</</h2>
 
-<p id="demo2">I DONT WANNA DISAPPEAR AHHHHHHH!</p>
+<p id="myText" class="fade-out-text">I DONT WANNA DISAPPEAR AHHHHHHH!</p>
 
-<button type="button" onclick="document.getElementById('demo2').style.display='none'">Click Me!</button>
+<button type="button" onclick="fadeOutText()">Click Me!</button>
 
 <h2>What Can JavaScript Do?</h2>
 
@@ -62,6 +71,14 @@ img {
 <p id="demo3" style="display:none">BOO!</p>
 
 <button type="button" onclick="document.getElementById('demo3').style.display='block'">click me!</button>
+
+<script>
+function fadeOutText() {
+  const textElement = document.getElementById('myText');
+  // Add the 'is-hidden' class, which triggers the CSS transition
+  textElement.classList.add('is-hidden');
+}
+</script>
 
 </body>
 </html>
